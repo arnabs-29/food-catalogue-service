@@ -9,10 +9,40 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class FoodCataloguePage {
 
    private List<FoodItem> foodItemList;
    private Restaurant restaurant;
+
+   public FoodCataloguePage() {
+   }
+
+   public FoodCataloguePage(List<FoodItem> foodItemList, Restaurant restaurant) {
+      this.foodItemList = foodItemList;
+      this.restaurant = restaurant;
+   }
+
+   public List<FoodItem> getFoodItemList() {
+      return foodItemList;
+   }
+
+   public Restaurant getRestaurant() {
+      return restaurant;
+   }
+
+   public void setFoodItemList(List<FoodItem> foodItemList) {
+      this.foodItemList = foodItemList;
+   }
+
+   public void setRestaurant(Restaurant restaurant) {
+      this.restaurant = restaurant;
+   }
+
+   @Override
+   public String toString() {
+      return "FoodCataloguePage{" +
+              "foodItemList=" + foodItemList +
+              ", restaurant=" + restaurant +
+              '}';
+   }
 }

@@ -15,17 +15,17 @@ import java.util.List;
 @Service
 public class FoodCatelogueService {
 
-    @Autowired
-    private FoodItemRepo foodItemRepo;
+    private final FoodItemRepo foodItemRepo;
+    private final RestTemplate restTemplate;
+    private final FoodItemMapper foodItemMapper;
 
     @Autowired
-    private RestTemplate restTemplate;
-
-    private FoodItemMapper foodItemMapper;
-
-    public FoodCatelogueService(FoodItemMapper foodItemMapper) {
+    public FoodCatelogueService(FoodItemRepo foodItemRepo, RestTemplate restTemplate, FoodItemMapper foodItemMapper) {
+        this.foodItemRepo = foodItemRepo;
+        this.restTemplate = restTemplate;
         this.foodItemMapper = foodItemMapper;
     }
+
     public FoodItemDTO addFoodItem(FoodItemDTO foodItemDTO){
         FoodItem foodItem=foodItemRepo.save(foodItemMapper.mapFoodItemDTOToFoodItem(foodItemDTO));
         return foodItemMapper.mapFoodItemToFoodItemDTO(foodItem);
